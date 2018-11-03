@@ -61,7 +61,7 @@ class Encrypt
   end
 
   def encrypt_helper(mini_array)
-      @alphabet[@alphabet.find_index(mini_array[1]) - (mini_array[0] % @alphabet.size)]
+      @alphabet[@alphabet.find_index(mini_array[1].downcase) - (mini_array[0] % @alphabet.size)]
   end
 
   def encrypt
