@@ -45,8 +45,8 @@ class EncryptTest < Minitest::Test
   def test_it_can_reduce_message_index_to_four_values
     to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
     encrypt = Encrypt.new(to_be_encrypted)
-    expected = {0 => "h", 1 => "e", 2 => "l", 3 => "l", 4 => "o"}
-    assert_equal expected, encrypt.message_reduce_keys(encrypt.message)
+    expected = [[0, "h"], [1, "e"], [2, "l"], [3, "l"], [0, "o"]]
+    assert_equal expected, encrypt.message_reduce_index(encrypt.message)
   end
 
 end
