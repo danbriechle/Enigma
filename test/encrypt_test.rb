@@ -75,12 +75,29 @@ class EncryptTest < Minitest::Test
     assert_equal expected, encrypt.alphabet
   end
 
-  def test_it_can_encrypt_the_message_by_its_shift
+  def test_it_can_encrypt_just_one_index_letter_pair
     to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
     encrypt = Encrypt.new(to_be_encrypted)
-
-    assert_equal "encrypteddummymessage", encrypt.encrypt
+    mini_array = [19 , "h"]
+    mini_array_2 = [19 , "o"]
+    mini_array_3 = [36, "l"]
+    assert_equal "p", encrypt.encrypt_helper(mini_array)
+    assert_equal "w", encrypt.encrypt_helper(mini_array_2)
+    assert_equal "c", encrypt.encrypt_helper(mini_array_3)
   end
+
+  def test_it_can_encrypt_a_whole_meesage
+    to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    assert_equal "pdcqw", encrypt.encrypt
+  end
+
+  def test_it_can_encrypt_a_longer_meesage_with_spaces
+    to_be_encrypted = {date: "110218", key: "12345", message: "its no secret you cant spel"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    assert_equal "qsjevnrxmbijazptbzufvsrxxdc", encrypt.encrypt
+  end
+
 end
 
 

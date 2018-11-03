@@ -60,4 +60,18 @@ class Encrypt
 
   end
 
+  def encrypt_helper(mini_array)
+      @alphabet[@alphabet.find_index(mini_array[1]) - (mini_array[0] % @alphabet.size)]
+  end
+
+  def encrypt
+    encrypted = index_swap_with_shift.map do |letter_shift_pair|
+      encrypt_helper(letter_shift_pair)
+    end
+    encrypted.join
+  end
+
+
+
+
 end
