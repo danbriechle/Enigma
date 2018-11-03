@@ -35,6 +35,13 @@ class EncryptTest < Minitest::Test
     encrypt = Encrypt.new(to_be_encrypted)
     assert_equal [12, 23, 34, 45], encrypt.first_shift
   end
+
+  def test_it_can_produce_the_total_shift
+    to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    assert_equal [19, 28, 36, 49], encrypt.total_shift
+  end
+
 end
 # initialized with a hash containg three keys:
 #{date object => string , key object: => string, message object: => string}
