@@ -16,4 +16,17 @@ class Encrypt
     end
     numbers.last(4)
   end
+
+  def first_shift
+    single_digits = @key.split("")
+    double_digits = single_digits.zip(single_digits.rotate).map do |mini_array|
+      mini_array[0] + mini_array[1]
+    end
+    first_shift_array = double_digits.map do |digit|
+      digit.to_i
+    end
+    first_shift_array.pop
+    first_shift_array
+  end
+
 end
