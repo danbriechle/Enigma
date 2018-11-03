@@ -6,6 +6,7 @@ class Encrypt
     @key = encrypt_hash[:key]
     @message = encrypt_hash[:message]
     @alphabet = ("a".."z").to_a << " "
+    @alphabet_reversed = alphabet.reverse
   end
 
   def squared
@@ -74,6 +75,21 @@ class Encrypt
       encrypt_helper(letter_shift_pair)
     end
     encrypted.join
+  end
+
+  def decrypt_helper(mini_array)
+    if @alphabet.include?(mini_array[1].downcase)
+      @alphabet_reversed[@alphabet_reversed.find_index(mini_array[1].downcase) - (mini_array[0] % @alphabet_reversed.size)]
+    else
+      mini_array[1]
+    end
+  end
+
+  def decrypt
+    decrypted = index_swap_with_shift.map do |letter_shift_pair|
+      decrypt_helper(letter_shift_pair)
+    end
+    decrypted.join
   end
 
 end
