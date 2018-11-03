@@ -23,6 +23,12 @@ class EncryptTest < Minitest::Test
     encrypt = Encrypt.new(to_be_encrypted)
     assert_equal 12148007524, encrypt.squared
   end
+
+  def test_it_can_get_the_last_four_digits_from_date_squared
+    to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    assert_equal [7, 5, 2, 4], encrypt.last_four
+  end
 end
 # initialized with a hash containg three keys:
 #{date object => string , key object: => string, message object: => string}
