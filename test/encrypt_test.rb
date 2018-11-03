@@ -36,10 +36,10 @@ class EncryptTest < Minitest::Test
     assert_equal [12, 23, 34, 45], encrypt.first_shift
   end
 
-  def test_it_can_produce_the_total_shift
+  def test_it_can_produce_the_total_shift_with_index
     to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
     encrypt = Encrypt.new(to_be_encrypted)
-    assert_equal [19, 28, 36, 49], encrypt.total_shift
+    assert_equal [[0, 19], [1, 28], [2, 36], [3, 49]], encrypt.total_shift
   end
 
   def test_it_can_reduce_message_index_to_four_values
@@ -53,18 +53,20 @@ class EncryptTest < Minitest::Test
     to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
     encrypt = Encrypt.new(to_be_encrypted)
     mini_array = [0, "h"]
-    assert_equal [19, "h"], encrypt.swap(mini_array)
+    total_shift_mini_array =[0, 19]
+    assert_equal [19, "h"], encrypt.swap(mini_array, total_shift_mini_array)
 
   end
 
   def test_reduced_message_index_can_be_swapped_with_shift
-    skip
     to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
     encrypt = Encrypt.new(to_be_encrypted)
     expected = [[19, "h"], [28, "e"], [36, "l"], [49, "l"], [19, "o"]]
     assert_equal expected, encrypt.index_swap_with_shift
   end
 end
+
+
 # initialized with a hash containg three keys:
 #{date object => string , key object: => string, message object: => string}
 # decrypt and encrypt may become a shift class not sure yet
