@@ -29,4 +29,10 @@ class Encrypt
     first_shift_array
   end
 
+  def total_shift
+    last_four.zip(first_shift).map do |mini_array|
+      mini_array[0] + mini_array[1]
+    end
+  end
+
 end
