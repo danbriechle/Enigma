@@ -64,6 +64,40 @@ class EncryptTest < Minitest::Test
     expected = [[19, "h"], [28, "e"], [36, "l"], [49, "l"], [19, "o"]]
     assert_equal expected, encrypt.index_swap_with_shift
   end
+
+  def test_alphabet_is_in_place
+    to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
+       "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+        "u", "v", "w", "x", "y", "z", " "]
+
+    assert_equal expected, encrypt.alphabet
+  end
+
+  def test_it_can_encrypt_just_one_index_letter_pair
+    to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    mini_array = [19 , "h"]
+    mini_array_2 = [19 , "o"]
+    mini_array_3 = [36, "l"]
+    assert_equal "p", encrypt.encrypt_helper(mini_array)
+    assert_equal "w", encrypt.encrypt_helper(mini_array_2)
+    assert_equal "c", encrypt.encrypt_helper(mini_array_3)
+  end
+
+  def test_it_can_encrypt_a_whole_meesage
+    to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    assert_equal "pdcqw", encrypt.encrypt
+  end
+
+  def test_it_can_encrypt_a_longer_meesage_with_spaces
+    to_be_encrypted = {date: "110218", key: "12345", message: "its no secret you cant spel"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    assert_equal "qsjevnrxmbijazptbzufvsrxxdc", encrypt.encrypt
+  end
+
 end
 
 

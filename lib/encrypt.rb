@@ -1,9 +1,10 @@
 class Encrypt
-  attr_reader :date, :key, :message
+  attr_reader :date, :key, :message, :alphabet
   def initialize(encrypt_hash)
     @date = encrypt_hash[:date]
     @key = encrypt_hash[:key]
     @message = encrypt_hash[:message]
+    @alphabet = ("a".."z").to_a << " "
   end
 
   def squared
@@ -58,5 +59,19 @@ class Encrypt
     end
 
   end
+
+  def encrypt_helper(mini_array)
+      @alphabet[@alphabet.find_index(mini_array[1]) - (mini_array[0] % @alphabet.size)]
+  end
+
+  def encrypt
+    encrypted = index_swap_with_shift.map do |letter_shift_pair|
+      encrypt_helper(letter_shift_pair)
+    end
+    encrypted.join
+  end
+
+
+
 
 end
