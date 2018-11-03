@@ -24,10 +24,16 @@ class EncryptTest < Minitest::Test
     assert_equal 12148007524, encrypt.squared
   end
 
-  def test_it_can_get_the_last_four_digits_from_date_squared
+  def test_it_can_get_the_last_four_digit_array_from_date_squared
     to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
     encrypt = Encrypt.new(to_be_encrypted)
     assert_equal [7, 5, 2, 4], encrypt.last_four
+  end
+
+  def test_it_can_generate_first_shift_array
+    to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    assert_equal [12, 23, 34, 45], encrypt.first_shift
   end
 end
 # initialized with a hash containg three keys:
