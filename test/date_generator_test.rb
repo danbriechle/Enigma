@@ -14,5 +14,4 @@ class DateGenratorTest < Minitest::Test
     assert_equal 110218, ds.date
     #today is 11 02 18
   end
-  
 end
