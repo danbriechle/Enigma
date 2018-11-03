@@ -1,4 +1,4 @@
-require_relative '../test/test_helper'
+require './test/test_helper'
 require './lib/date_generator'
 
 class DateGenratorTest < Minitest::Test
@@ -12,6 +12,6 @@ class DateGenratorTest < Minitest::Test
     ds = DateGenerator.new
 
     assert_equal 110318, ds.date
-    #today is 11 03 18
   end
+  
 end
