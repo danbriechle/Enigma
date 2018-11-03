@@ -1,7 +1,8 @@
-require_relative '../test/test_helper'
+require './test/test_helper'
 require "./lib/encrypt"
 
 class EncryptTest < Minitest::Test
+  
   def test_it_exists
     to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
     encrypt = Encrypt.new(to_be_encrypted)
@@ -108,12 +109,6 @@ class EncryptTest < Minitest::Test
     to_be_encrypted = {date: "110218", key: "12345", message: "iTs no Secret yOu cant spel!"}
     encrypt = Encrypt.new(to_be_encrypted)
     assert_equal "qsjevnrxmbijazptbzufvsrxxdc!", encrypt.encrypt
-  end
-
-  def test_it_can_decrypt
-    to_be_encrypted = {date: "110218", key: "12345", message: "qsjevnrxmbijazptbzufvsrxxdc"}
-    encrypt = Encrypt.new(to_be_encrypted)
-    assert_equal "its no secret you cant spel",encrypt.decrypt
   end
 
 

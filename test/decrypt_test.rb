@@ -1,10 +1,18 @@
-require_relative '../test/test_helper'
+require './test/test_helper'
+require './lib/decrypt'
 
-class DecryptTest
+class DecryptTest < Minitest::Test
+  
   def test_it_exists
+    to_be_decrypted = {date: "110218", key: "12345", cypher_text: "pdcqw"}
+    decrypt = Decrypt.new(to_be_decrypted)
+    assert_instance_of Decrypt, decrypt
   end
+
+  def test_it_can_decrypt
+    to_be_encrypted = {date: "110218", key: "12345", cypher_text: "qsjevnrxmbijazptbzufvsrxxdc!"}
+    decrypt = Decrypt.new(to_be_encrypted)
+    assert_equal "its no secret you cant spel!",decrypt.encrypt
+  end
+
 end
-
-
-# initialized with date object, key object, maybe message object
-# decrypt and encrypt may become a shift class not sure yet
