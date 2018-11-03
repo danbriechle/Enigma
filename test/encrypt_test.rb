@@ -74,6 +74,13 @@ class EncryptTest < Minitest::Test
 
     assert_equal expected, encrypt.alphabet
   end
+
+  def test_it_can_encrypt_the_message_by_its_shift
+    to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
+    encrypt = Encrypt.new(to_be_encrypted)
+
+    assert_equal "encrypteddummymessage", encrypt.encrypt
+  end
 end
 
 
