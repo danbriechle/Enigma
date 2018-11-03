@@ -98,6 +98,12 @@ class EncryptTest < Minitest::Test
     assert_equal "qsjevnrxmbijazptbzufvsrxxdc", encrypt.encrypt
   end
 
+  def test_it_can_work_with_upper_case_letters
+    to_be_encrypted = {date: "110218", key: "12345", message: "iTs no Secret yOu cant spel"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    assert_equal "qsjevnrxmbijazptbzufvsrxxdc", encrypt.encrypt
+  end
+
 end
 
 
