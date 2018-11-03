@@ -104,13 +104,17 @@ class EncryptTest < Minitest::Test
     assert_equal "qsjevnrxmbijazptbzufvsrxxdc", encrypt.encrypt
   end
 
+  def test_for_unincluded_charecters
+    to_be_encrypted = {date: "110218", key: "12345", message: "iTs no Secret yOu cant spel!"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    assert_equal "qsjevnrxmbijazptbzufvsrxxdc!", encrypt.encrypt
+  end
+
+  def test_it_can_decrypt
+    to_be_encrypted = {date: "110218", key: "12345", message: "qsjevnrxmbijazptbzufvsrxxdc"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    assert_equal "its no secret you cant spel",encrypt.decrypt
+  end
+
+
 end
-
-
-# initialized with a hash containg three keys:
-#{date object => string , key object: => string, message object: => string}
-# decrypt and encrypt may become a shift class not sure yet
-
-
-#key is randomly generated if none provided must be 5 digits remember to zero pad
-#Date is todays date if none is provide DDMMYY
