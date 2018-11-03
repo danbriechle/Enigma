@@ -1,3 +1,4 @@
+require 'pry'
 class Encrypt
   attr_reader :date, :key, :message, :alphabet
   def initialize(encrypt_hash)
@@ -61,7 +62,11 @@ class Encrypt
   end
 
   def encrypt_helper(mini_array)
+    if @alphabet.include?(mini_array[1].downcase)
       @alphabet[@alphabet.find_index(mini_array[1].downcase) - (mini_array[0] % @alphabet.size)]
+    else
+      mini_array[1]
+    end
   end
 
   def encrypt
