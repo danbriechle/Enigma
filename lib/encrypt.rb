@@ -9,4 +9,11 @@ class Encrypt
   def squared
     date.to_i * date.to_i
   end
+
+  def last_four
+    numbers = squared.to_s.split("").map do |number|
+      number.to_i
+    end
+    numbers.last(4)
+  end
 end
