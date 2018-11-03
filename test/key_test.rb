@@ -1,4 +1,4 @@
-require_relative '../test_helper'
+require_relative '../test/test_helper'
 require "./lib/key"
 
 class KeyTest < Minitest::Test
@@ -11,7 +11,10 @@ class KeyTest < Minitest::Test
   def test_it_can_generate_a_5_digit_number
     key = Key.new
 
-    assert_instance_of Integer, key.number
-    assert_equal 5, key.to_s.length
+    assert_instance_of Integer, key.first_shift
+    assert_equal 5, key.first_shift.to_s.length
   end
+
+  #not sure if I want this to be a stirng at this point or an integer
+  
 end
