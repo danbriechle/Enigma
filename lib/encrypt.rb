@@ -32,7 +32,31 @@ class Encrypt
   def total_shift
     last_four.zip(first_shift).map do |mini_array|
       mini_array[0] + mini_array[1]
+    end.map.with_index do |position, value|
+     [value, position]
+   end
+  end
+
+  def message_reduce_index
+    @message.split("").map.with_index do |value, position|
+      [position%4,  value]
     end
+  end
+
+  def swap(mini_array,total_shift_mini_array)
+    if total_shift_mini_array[0] == mini_array[0]
+      mini_array[0] = total_shift_mini_array[1]
+    end
+    [mini_array[0], mini_array[1]]
+  end
+
+  def index_swap_with_shift
+    message_reduce_index.each do |mini_array|
+      total_shift.map do |total_shift_mini_array|
+        swap(mini_array,total_shift_mini_array)
+    end
+    end
+
   end
 
 end
