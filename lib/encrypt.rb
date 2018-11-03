@@ -5,4 +5,8 @@ class Encrypt
     @key = encrypt_hash[:key]
     @message = encrypt_hash[:message]
   end
+
+  def squared
+    date.to_i * date.to_i
+  end
 end
