@@ -104,6 +104,13 @@ class EncryptTest < Minitest::Test
     assert_equal "qsjevnrxmbijazptbzufvsrxxdc", encrypt.encrypt
   end
 
+  def test_for_unincluded_charecters
+    to_be_encrypted = {date: "110218", key: "12345", message: "iTs no Secret yOu cant spel!"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    assert_equal "qsjevnrxmbijazptbzufvsrxxdc!", encrypt.encrypt
+  end
+
+
 end
 
 
