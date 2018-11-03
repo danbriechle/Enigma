@@ -35,9 +35,18 @@ class Encrypt
     end
   end
 
-  def message_reduce_index(message)
-    message.split("").map.with_index do |value, position|
+  def message_reduce_index
+    @message.split("").map.with_index do |value, position|
       [position%4,  value]
     end
   end
+
+  def index_swap_with_shift
+
+  end
+
+  # .map.with_index do |position, value|
+  #  [value, position]
+
+
 end

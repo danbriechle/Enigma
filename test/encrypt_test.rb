@@ -46,9 +46,24 @@ class EncryptTest < Minitest::Test
     to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
     encrypt = Encrypt.new(to_be_encrypted)
     expected = [[0, "h"], [1, "e"], [2, "l"], [3, "l"], [0, "o"]]
-    assert_equal expected, encrypt.message_reduce_index(encrypt.message)
+    assert_equal expected, encrypt.message_reduce_index
   end
 
+  def test_for_index_swap_helper_method
+    to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    mini_array = [0, "h"]
+    assert_equal [19, "h"], encrypt.swap(mini_array)
+
+  end
+
+  def test_reduced_message_index_can_be_swapped_with_shift
+    skip
+    to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    expected = [[19, "h"], [28, "e"], [36, "l"], [49, "l"], [19, "o"]]
+    assert_equal expected, encrypt.index_swap_with_shift
+  end
 end
 # initialized with a hash containg three keys:
 #{date object => string , key object: => string, message object: => string}
