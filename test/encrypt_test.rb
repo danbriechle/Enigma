@@ -42,6 +42,13 @@ class EncryptTest < Minitest::Test
     assert_equal [19, 28, 36, 49], encrypt.total_shift
   end
 
+  def test_it_can_reduce_message_index_to_four_values
+    to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    expected = {0 => "h", 1 => "e", 2 => "l", 3 => "l", 4 => "o"}
+    assert_equal expected, encrypt.message_reduce_keys(encrypt.message)
+  end
+
 end
 # initialized with a hash containg three keys:
 #{date object => string , key object: => string, message object: => string}
