@@ -64,6 +64,16 @@ class EncryptTest < Minitest::Test
     expected = [[19, "h"], [28, "e"], [36, "l"], [49, "l"], [19, "o"]]
     assert_equal expected, encrypt.index_swap_with_shift
   end
+
+  def test_alphabet_is_in_place
+    to_be_encrypted = {date: "110218", key: "12345", message: "hello"}
+    encrypt = Encrypt.new(to_be_encrypted)
+    expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
+       "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+        "u", "v", "w", "x", "y", "z", " "]
+
+    assert_equal expected, encrypt.alphabet
+  end
 end
 
 
