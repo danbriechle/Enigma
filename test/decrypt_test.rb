@@ -2,7 +2,7 @@ require './test/test_helper'
 require './lib/decrypt'
 
 class DecryptTest < Minitest::Test
-  
+
   def test_it_exists
     to_be_decrypted = {date: "110218", key: "12345", cypher_text: "pdcqw"}
     decrypt = Decrypt.new(to_be_decrypted)

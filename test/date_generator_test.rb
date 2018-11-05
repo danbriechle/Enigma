@@ -12,6 +12,7 @@ class DateGenratorTest < Minitest::Test
     ds = DateGenerator.new
 
     assert_equal 110318, ds.date
+    # todays date is 11 03 18
   end
-  
+
 end
