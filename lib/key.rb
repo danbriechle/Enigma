@@ -1,7 +1,9 @@
 require 'SecureRandom'
 require 'pry'
 class Key
+
   attr_reader :first_shift
+
   def initialize
     @first_shift = number_generator
   end
@@ -11,5 +13,5 @@ class Key
    number
   end
 
-
+  
 end

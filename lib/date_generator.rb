@@ -1,7 +1,10 @@
 require 'time'
 require 'pry'
+
 class DateGenerator
+
   attr_reader :date
+
   def initialize
     @date = date_generator
   end
@@ -13,4 +16,5 @@ class DateGenerator
     year = (date.year.to_i) - 2000
     (month + day + year.to_s).to_i
   end
+  
 end
