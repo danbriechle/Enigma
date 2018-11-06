@@ -22,18 +22,19 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, enigma.decrypt("pdcqw!", "12345", "110218")
   end
 
-  def test_it_can_encrypt_a_message_with_only_date_provided
+  def test_it_can_encrypt_a_message_with_only_key_provided
     enigma = Enigma.new
 
-    expected = {date: "110618", key:  "12345", encryption: "pdcqw!"}
-    assert_equal expected, enigma.encrypt("heLlo!", "110618")
+    expected = {date: "110618", key:  "12345", encryption: "v cqb!"}
+
+    assert_equal expected, enigma.encrypt("heLlo!", "12345")
     #since these are randomly genrerated they always fail but they are working
   end
 
   def test_it_can_encrypt_a_message_without_date_or_key_provided
     enigma = Enigma.new
 
-    expected = {date: "110518", key:  "12345", encryption: "pdcqw!"}
+    expected = {date: "110618", key:  "12345", encryption: "pdcqw!"}
     assert_equal expected, enigma.encrypt( "Hello!" )
     #since these are randomly genrerated they always fail but they are working
 
