@@ -8,8 +8,8 @@ class Decrypt
   def initialize(encrypt_hash)
     @date = encrypt_hash[:date]
     @key = encrypt_hash[:key]
-    @message = encrypt_hash[:cypher_text]
+    @message = encrypt_hash[:decryption]
     @alphabet = (("a".."z").to_a << " ").reverse
   end
-  
+
 end
