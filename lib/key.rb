@@ -12,6 +12,5 @@ class Key
    number = SecureRandom.random_number(99999).to_s.ljust(5, "0").to_i
    number
   end
-
-  
+    
 end

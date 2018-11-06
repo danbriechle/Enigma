@@ -29,7 +29,6 @@ class Enigma
                 date: date,
                 key: key}
     decrypted = Decrypt.new(@decrypt).encrypt
-
     @decrypt = {date: date.to_s,
                 key: key.to_s,
                 decryption: decrypted}
