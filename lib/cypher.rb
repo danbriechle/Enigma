@@ -12,7 +12,7 @@ module Cypher
   end
 
   def first_shift
-    single_digits = @key.split("")
+    single_digits = @key.to_s.split("")
     double_digits = single_digits.zip(single_digits.rotate).map do |mini_array|
       mini_array[0] + mini_array[1]
     end
